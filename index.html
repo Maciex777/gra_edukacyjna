@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Gra edukacyjna polegająca na tłumaczeniu słów angielskich">
+    <meta name="author" content="Maciej Molenda">
+
+    <title>Trening angielskiego</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+	<link href="style.css" type="text/css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"> 
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+	<script type="text/javascript" src="script.js"></script>
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+	    <div id="page-wrapper" class="col-xs-12 col-lg-9">          
+
+            <div class="row">
+			
+				<div class="col-xs-4 col-sm-2 sidenav bocznypasek">
+				  <div class="well">
+					<h5>Czas na odpowiedź:</h5>
+					<div id="time" class="text-center"></div>
+				  </div>
+				  <div class="well">
+					<h5>Czas do końca gry:</h5>
+					<div id="time2" class="text-center"></div>
+				  </div>
+				  <div class="well">
+					<h5>Punkty:</h5>
+					<div id="punkty">0</div>
+				  </div>
+				  <div class="well">
+					<h5>Dodatkowe punkty:</h5>
+					<div id="punktydod">0</div>
+				  </div>
+				</div>
+			
+                <div class="col-xs-8 col-sm-6">
+					<div class="row">
+						<div class="col-lg-12">			
+							<h1 class="page-header">Trening angielskiego</h1>
+						</div>
+					</div>
+                    <div class="well">
+                        <p id="tekst">Sprawdź czy znasz angielskie słówka na poziomie B2.<br/>Znajdź najodpowiedniejsze słowo pasujące do znaczenia.<br/>Jeśli przetłumaczysz dużo słów otrzymasz bonusy w postaci dodatkowego czasu i dodatkowych punktów!</p>
+                    </div>
+					<div id="opis" class="elems"></div>
+
+                    <div class="panel panel-default">
+                        <h3 class="panel-heading" id="ocena">
+                            Wybierz poziom trudności:
+                        </h3>
+						<div class="panel-body text-center">
+						  <h3 id="komentarz"></h3>
+						  <input type="text" id="pole" class="elems"/>
+						  <input type="submit" value="Sprawdź" onclick="sprawdz()"  class="elems buttons"/>
+						  <input type="submit" value="Zagraj jeszcze raz" onclick="zagraj()" id="przycisk" class="buttons"/>
+						  <input type="submit" value="Podpowiedź (alt+x)" onclick="podpowiedz()" id="hint"  class="elems buttons"/>
+						  <p id="tekstpodpowiedzi" class="elems text-left"></p>
+						  <p id="wynik" class="elems text-left"></p>
+						  <form id="pytanieotrudnosc" action="...">
+							<label><input class="radio" id="latwy" type="radio" name="trudnosc" value="wartość" />Łatwy</label>
+							<label><input class="radio" id="normal" type="radio" name="trudnosc" value="wartość" checked="checked"/>Normalny</label>
+							<label><input class="radio" id="trudny"  type="radio" name="trudnosc" value="wartość" />Trudny</label>
+						  </form>
+						  <input class="buttons" id="potwierdzenie" type="submit" value="Potwierdź" onclick="start()"/>
+                        </div>
+						<div class="panel-footer">                     
+							<p class="elems">Za trudne słowa? Zobacz listę kosztem 1 punktu</p>
+							<button class="elems buttons" id="buttonlist" type="button" onclick="lista()">Lista</button>
+							<div id="lista" class="elems" style="overflow:scroll;"></div>							
+                        </div>
+                    </div>
+                </div>
+
+				<div class="col-xs-0 col-sm-4 sidenav">
+					<div id="bonus">
+					<h1><strong>&emsp;BONUS</strong></h1><p>+dodatkowy czas<br/>+mnożnik punktów x5</p>
+					</div>
+				</div>
+				
+			</div>
+  
+        </div>
+		
+				
+		<footer class="container-fluid">
+			<div class="row col-xs-12">
+				<p class="col-xs-4 col-lg-3 text-left" style="float:left;">&copy; 2017 Trening angielskiego</p>
+				<ul class="col-xs-3 col-lg-6 text-right">
+					  <li class="col-xs-1 col-lg-2"><a href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
+					  <li class="col-xs-1 col-lg-2"><a href="#"><i class="fa fa-twitter-square" aria-hidden="true"></i></a></li>
+					  <li class="col-xs-1 col-lg-2"><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+				</ul>
+				<p class="col-xs-5 col-lg-3 text-right" style="float:right;">Created by Maciej Molenda</p>
+			</div>
+		</footer>
+
+
+    </div>
+
+</body>
+</html>
