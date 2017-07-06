@@ -166,15 +166,17 @@ function zagraj(){
 			document.getElementById("przycisk").style.display='none';
 			//pokazanie ukrytych elementów
 			var elems = document.getElementsByClassName('elems');
-            for (var g = 0; g < elems.length; g++) {
-                elems[g].style.display='block';
-            }
+		    for (var g = 0; g < elems.length; g++) {
+			elems[g].style.display='block';
+		    }
 			document.getElementById("tekstpodpowiedzi").style.display='none';
 			document.getElementById("tekst").innerHTML="Sprawdź czy znasz angielskie słówka na poziomie B2<br/>Znajdź najodpowiedniejsze słowo pasujące do znaczenia";
 			document.getElementById("ocena").innerHTML="Wpisz słowo po angielsku";
 			//przywracanie usuniętych słów i zdań
 			i = ["w dziedzinie/ obszarze", "ukończyć (np. uniwersytet)", "współpracować z", "jak do tej pory", "rozwijać umiejętności", "udowodnić", "zdobyć doświadczenie", "poczucie odpowiedzialności", "samorealizacja", "przyjąć na siebie", "obowiązki", "poszerzać swoje horyzonty", "kompetencje", "ostateczny termin", "porażka", "w moim przypadku", "uwielbiać", "trudny", "nagroda", "dobre relacje", "mocne strony", "słabe strony", "cechy (zalety, walory)", "potrafiący się przystosować", "oddany", "umiejętność radzenia sobie w trudnych sytuacjach", "mieć dobre stosunki z kimś", "pracować pod presją", "jeśli chodzi o …", "wada", "ulepszać, poprawiać", "współpracownik", "uprzejmy", "osiągnięcie", "dokonanie", "poprzedni", "kiedyś", "odnieść sukces", "zarabiać", "mimo", "przeszkoda", "zdołać", "wyznaczać cele", "trzymać się czegoś", "gwarancja stałego zatrudnienia", "uczestniczyć", "rozmaity", "mnóstwo", "zatrudnić", "korzyści", "radzić sobie z", "solidna wiedza", "szkolenie", "istotne zadania", "jestem przekonany/a", "wdrażać", "dostać zapłatę", "uczciwie", "otrzymać", "pensja", "w przedziale", "brutto"];
 			document.getElementById("pole").value="";
+			//zaznaczenie pola tekstowego		
+			document.getElementById("pole").focus();
 			//ponowne odliczanie czasu
 			pierwszypoziom = true;
 			random();
