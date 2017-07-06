@@ -1,3 +1,4 @@
+var liczbaPunktow = 0;
 var liczbaPunktowDod = 0;
 //zmienne z polskimi opisami = "i", angielskimi słowami = "k", zdaniami angielskimi, podpowiedziami słów.    Aby dodać słowo, zdanie i podpowiedź: dodaj je odpowiednio do czterech poniższych zmiennych, dodaj odpowiednio po 1 else if w funkcji sprawdz(), skopiuj zmienną "i" do funkcji zagraj() i do funkcji koniec() 
 var i = ["w dziedzinie/ obszarze", "ukończyć (np. uniwersytet)", "współpracować z", "jak do tej pory", "rozwijać umiejętności", "udowodnić", "zdobyć doświadczenie", "poczucie odpowiedzialności", "samorealizacja", "przyjąć na siebie", "obowiązki", "poszerzać swoje horyzonty", "kompetencje", "ostateczny termin", "porażka", "w moim przypadku", "uwielbiać", "trudny", "nagroda", "dobre relacje", "mocne strony", "słabe strony", "cechy (zalety, walory)", "potrafiący się przystosować", "oddany", "umiejętność radzenia sobie w trudnych sytuacjach", "mieć dobre stosunki z kimś", "pracować pod presją", "jeśli chodzi o …", "wada", "ulepszać, poprawiać", "współpracownik", "uprzejmy", "osiągnięcie", "dokonanie", "poprzedni", "kiedyś", "odnieść sukces", "zarabiać", "mimo", "przeszkoda", "zdołać", "wyznaczać cele", "trzymać się czegoś", "gwarancja stałego zatrudnienia", "uczestniczyć", "rozmaity", "mnóstwo", "zatrudnić", "korzyści", "radzić sobie z", "solidna wiedza", "szkolenie", "istotne zadania", "jestem przekonany/a", "wdrażać", "dostać zapłatę", "uczciwie", "otrzymać", "pensja", "w przedziale", "brutto"];
@@ -149,6 +150,107 @@ function koniec(){
 		     }	else if (twojWynik > 80){
 			 document.getElementById("komentarz").innerHTML="Zajebiście!";
 		     }	
+};
+
+function zagraj(){
+		     //zerowanie wszystkich liczników
+			clearInterval(myVar);
+			clearInterval(myVar2);
+			liczbaPunktow = 0;
+			liczbaPunktowDod = 0;
+			document.getElementById("punkty").innerHTML= liczbaPunktow;
+			document.getElementById("punktydod").innerHTML= liczbaPunktowDod;
+			document.getElementById("wynik").innerHTML=" ";
+			document.getElementById("komentarz").innerHTML=" ";
+			//ukrycie przycisku zagraj jeszcze raz
+			document.getElementById("przycisk").style.display='none';
+			//pokazanie ukrytych elementów
+			var elems = document.getElementsByClassName('elems');
+            for (var g = 0; g < elems.length; g++) {
+                elems[g].style.display='block';
+            }
+			document.getElementById("tekstpodpowiedzi").style.display='none';
+			document.getElementById("tekst").innerHTML="Sprawdź czy znasz angielskie słówka na poziomie B2<br/>Znajdź najodpowiedniejsze słowo pasujące do znaczenia";
+			document.getElementById("ocena").innerHTML="Wpisz słowo po angielsku";
+			//przywracanie usuniętych słów i zdań
+			i = ["w dziedzinie/ obszarze", "ukończyć (np. uniwersytet)", "współpracować z", "jak do tej pory", "rozwijać umiejętności", "udowodnić", "zdobyć doświadczenie", "poczucie odpowiedzialności", "samorealizacja", "przyjąć na siebie", "obowiązki", "poszerzać swoje horyzonty", "kompetencje", "ostateczny termin", "porażka", "w moim przypadku", "uwielbiać", "trudny", "nagroda", "dobre relacje", "mocne strony", "słabe strony", "cechy (zalety, walory)", "potrafiący się przystosować", "oddany", "umiejętność radzenia sobie w trudnych sytuacjach", "mieć dobre stosunki z kimś", "pracować pod presją", "jeśli chodzi o …", "wada", "ulepszać, poprawiać", "współpracownik", "uprzejmy", "osiągnięcie", "dokonanie", "poprzedni", "kiedyś", "odnieść sukces", "zarabiać", "mimo", "przeszkoda", "zdołać", "wyznaczać cele", "trzymać się czegoś", "gwarancja stałego zatrudnienia", "uczestniczyć", "rozmaity", "mnóstwo", "zatrudnić", "korzyści", "radzić sobie z", "solidna wiedza", "szkolenie", "istotne zadania", "jestem przekonany/a", "wdrażać", "dostać zapłatę", "uczciwie", "otrzymać", "pensja", "w przedziale", "brutto"];
+			document.getElementById("pole").value="";
+			//ponowne odliczanie czasu
+			pierwszypoziom = true;
+			random();
+			//ustawienie czasu według trudności
+			if(document.getElementById('latwy').checked==true){
+			   fiveMinutes = 20;
+			   fiveMinutes2 = 80;
+			}else if(document.getElementById('normal').checked==true){
+			   fiveMinutes = 15;
+			   fiveMinutes2 = 70;
+			}else if(document.getElementById('trudny').checked==true){
+			   fiveMinutes = 8;
+			   fiveMinutes2 = 60;
+			}
+
+			display = document.querySelector('#time');
+			startTimer(fiveMinutes, display);
+
+			display2 = document.querySelector('#time2');
+			startTimer2(fiveMinutes2, display2);
+			audio = new Audio('sounds/LargeGong01.wav');
+			audio.play();  
+};
+
+//zatwierdzenie klawiszem enter
+function keyDown(e)
+{
+   e = (e)?e:event;
+   key = (e.which)?e.which:e.keyCode;
+   if(key == 13){
+    sprawdz()
+   }
+}
+document.onkeydown=keyDown;
+
+//skrót klawiszowy do podpowiedzi alt+x
+document.onkeyup=function(e){
+  var e = e || window.event; // for IE to cover IEs window event-object
+  if(e.altKey && e.which == 88) {
+    podpowiedz()
+    return false;
+  }
+}
+
+//po kliknięciu na podpowiedź
+function podpowiedz() {
+	document.getElementById("tekstpodpowiedzi").style.display='block';
+	audio = new Audio('sounds/BOOK.WAV');
+	audio.play();  
+};
+
+//po kliknięciu na liste
+function lista() {
+	liczbaPunktow-=1;
+	document.getElementById("punkty").innerHTML= liczbaPunktow;
+	document.getElementById("lista").style.display='block';
+	//stworzenie tabeli ze słowami
+	if(tablica){
+		var tab, tr, td, tn, row, col;
+		body = document.getElementsByTagName('body')[0];
+		tab = document.createElement('table');
+		for (row = 0; row < k.length; row++){
+		tr = document.createElement('tr');
+		for (col = 0; col < k[row].length; col++){
+		  td = document.createElement('td');
+		  tn = document.createTextNode(k[row][col]);
+		  td.appendChild(tn);
+		  tr.appendChild(td);
+		}
+		tab.appendChild(tr);
+		}
+		document.getElementById('lista').appendChild(tab);
+		tablica = false;
+	}
+	audio = new Audio('sounds/BOOK.WAV');
+	audio.play();  
 };
 
 //gdy odpowiedź jest poprawna
